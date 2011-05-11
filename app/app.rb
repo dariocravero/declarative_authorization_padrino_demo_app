@@ -4,7 +4,7 @@ class DeclarativeAuthorizationPadrinoDemoApp < Padrino::Application
   register Authorization::Padrino
 
   # Since we don't do auth here, include our CurrentUser helper so that things work for the controllers...
-  heleprs Authorization::Padrino::CurrentUser
+  helpers Authorization::Padrino::CurrentUser
 
   enable :sessions
 end
