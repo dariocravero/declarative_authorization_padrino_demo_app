@@ -1,6 +1,4 @@
-DeclAuthApp.controllers :users do
-  #include Authorization::Padrino::Protect
-
+DeclarativeAuthorizationPadrinoDemoApp.controllers :users do
   get '/', :provides => :json, :protect => [{:action => :read, :resource => :users}] do
     User.with_permissions_to.all.to_json(:include => :roles) 
   end

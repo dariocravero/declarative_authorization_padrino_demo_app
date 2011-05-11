@@ -1,4 +1,4 @@
-DeclAuthApp.controllers :demo do
+DeclarativeAuthorizationPadrinoDemoApp.controllers :demo do
   get :index, :map => "/" do
     render "index"
   end

@@ -1,0 +1,46 @@
+%html
+  %head
+    %title Declarative Authorization for Padrino
+    =javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js' 
+    :javascript
+      function log(data) { console.log(data); $("#log").prepend("<br/>"+JSON.stringify(data)); }
+  %body{:style => "font-size: 0.85em;"}
+    %h1 Declarative Authorization for Padrino
+    %p You've jquery here, so do whatever you want :)
+
+    %h2 Log
+    %pre#log{:style => "height: 200px; border-bottom: 5px dashed black; overflow: auto;"}
+
+    %h2 Some hints?
+
+    %ul
+      %li
+        %a{:href => 'javascript:$.get("/demo/current_user", log).error(log)'} Get the current user
+        %pre $.get("/demo/current_user", log).error(log)
+      %li
+        %a{:href => 'javascript:$.post("/demo/current_user", {id:1}, log).error(log)'} Set the current user to be the one with id 1
+        %pre $.post("/demo/current_user", {id:1}, log).error(log)
+      %li
+        %a{:href => 'javascript:$.post("/demo/role", {user:1, role: "admin"}, log).error(log)'} Give user with id 1 the admin role
+        %pre $.post("/demo/role", {user:1, role: "admin"}, log).error(log) 
+      %li
+        %a{:href => 'javascript:$.ajax({url: "/demo/role", data: {user:1, role: "admin"}, success: log, error: log, type:"DELETE"})'} Remove a role from a user
+        %pre $.ajax({url: "/demo/role", data: {user:1, role: "admin"}, success: log, error: log, type:"DELETE"})
+      %li
+        CRUD on /users
+        %ul
+          %li
+            %a{:href => 'javascript:$.get("/users", log).error(log)'} Get all users
+            %pre $.get("/users", log).error(log)
+          %li
+            %a{:href => 'javascript:$.get("/users/1", log).error(log)'} Get user with id 1
+            %pre $.get("/users", {id:1}, log).error(log)
+          %li
+            %a{:href => 'javascript:$.post("/users", {name : "Chopper"}, log).error(log)'} Create a user called Chopper
+            %pre $.post("/users", {name : "Chopper"}, log).error(log)
+          %li
+            %a{:href => 'javascript:$.ajax({url: "/users/1", data: {name:"Chopper 2"}, success: log, error: log, type:"PUT"})'} Update user with id 1 name's to Chopper 2
+            %pre $.ajax({url: "/users/1", data: {name:"Chopper 2"}, success: log, error: log, type:"PUT"})
+          %li
+            %a{:href => 'javascript:$.ajax({url: "/users/2", success: log, error: log, type:"DELETE"})'} Remove user with id 2
+            %pre $.ajax({url: "/users/2", success: log, error: log, type:"DELETE"})
