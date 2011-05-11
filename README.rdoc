@@ -1,5 +1,5 @@
 = Declarative Authorization for Padrino's wrapper example
 
-For the lib itself go to: https://github.com/dariocravero/declarative_authorizarion_padrino
+For the lib itself go to: https://github.com/dariocravero/declarative_authorization_padrino
 
 Run the migrations, start the app and head off to http://localhost:3000 for a quick and dirty demo
